@@ -1,4 +1,4 @@
-# Get weather
+# Bitly links
 
 The script does:
 1. If you enter any url, it converts it to short link (using service www.bitly.com).
