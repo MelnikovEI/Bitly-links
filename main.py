@@ -28,7 +28,7 @@ def is_bitlink(token, url):
     headers = {'Authorization': 'Bearer {}'.format(token)}
     url_template = 'https://api-ssl.bitly.com/v4/bitlinks/{}'
     parsed_url = urlparse(url)
-    short_url = f"{parsed_bitlink.netloc)}{parsed_url.path}"
+    short_url = f"{parsed_url.netloc}{parsed_url.path}"
     bitlink_url = url_template.format(short_url)
     response = requests.get(bitlink_url, headers=headers)
     return response.ok
@@ -37,8 +37,8 @@ def is_bitlink(token, url):
 if __name__ == '__main__':
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
+    input_link = input('Enter bitlink or any url\n')
     try:
-        input_link = input('Enter bitlink or any url\n')
         if is_bitlink(token, input_link):
             print('The number of clicks is ', count_clicks(token, input_link))
         else:
