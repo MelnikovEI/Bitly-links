@@ -6,10 +6,7 @@ from dotenv import load_dotenv
 
 def shorten_link(token, url):
     shorten_url = 'https://api-ssl.bitly.com/v4/shorten'
-    headers = {
-        'Authorization': 'Bearer {}'.format(token),
-        'Content-Type': 'application/json',
-    }
+    headers = {'Authorization': 'Bearer {}'.format(token)}
     body = {"long_url": url}
     response_post = requests.post(shorten_url, headers=headers, json=body)
     response_post.raise_for_status()
@@ -17,10 +14,7 @@ def shorten_link(token, url):
 
 
 def count_clicks(token, bitlink):
-    headers = {
-        'Authorization': 'Bearer {}'.format(token),
-        'Content-Type': 'application/json',
-    }
+    headers = {'Authorization': 'Bearer {}'.format(token)}
     url_template = 'https://api-ssl.bitly.com/v4/bitlinks/{}/clicks/summary'
     parsed = urlparse(bitlink)
     link_in_bitlink_format = (parsed.hostname if parsed.hostname else '') + parsed.path
@@ -31,10 +25,7 @@ def count_clicks(token, bitlink):
 
 
 def is_bitlink(token, url):
-    headers = {
-        'Authorization': 'Bearer {}'.format(token),
-        'Content-Type': 'application/json',
-    }
+    headers = {'Authorization': 'Bearer {}'.format(token)}
     url_template = 'https://api-ssl.bitly.com/v4/bitlinks/{}'
     parsed = urlparse(url)
     link_in_bitlink_format = (parsed.hostname if parsed.hostname else '') + parsed.path
