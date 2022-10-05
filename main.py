@@ -1,3 +1,4 @@
+import argparse
 import os
 import requests
 from urllib.parse import urlparse
@@ -37,7 +38,13 @@ def is_bitlink(token, url):
 if __name__ == '__main__':
     load_dotenv()
     token = os.environ['BITLY_TOKEN']
-    input_link = input('Enter bitlink or any url\n')
+    parser = argparse.ArgumentParser(description='This script makes short URL by bitly.com service '
+                                                 'or '
+                                                 'prints quantity of clicks for short URL')
+    parser.add_argument('url', help='URL to shorten or short url.\n'
+                                    'URL containing \'=\' should placed in ""', type=str)
+    args = parser.parse_args()
+    input_link = args.url
     try:
         if is_bitlink(token, input_link):
             print('The number of clicks is ', count_clicks(token, input_link))
