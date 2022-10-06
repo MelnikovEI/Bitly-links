@@ -42,7 +42,7 @@ if __name__ == '__main__':
                                                  'or '
                                                  'prints quantity of clicks for short URL')
     parser.add_argument('url', help='URL to shorten or short url.\n'
-                                    'URL containing \'=\' should placed in ""', type=str)
+                                    'URL containing \'=\' should placed in ""')
     args = parser.parse_args()
     input_link = args.url
     try:
